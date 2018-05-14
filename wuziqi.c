@@ -111,7 +111,7 @@ int judge(int x, int y)
 			for (k = 1; k <= 4; ++k) {
 				row = x + k * d[j] * step[i][0];
 				col = y + k * d[j] * step[i][1];
-				if (row >= 1 && row <=N && col >= 1 && col <= N && chessboard[x][y] = chessboard[row][col]) {
+				if (row >= 1 && row <=N && col >= 1 && col <= N && chessboard[x][y] == chessboard[row][col]) {
 					count += 1;
 				}
 				else 
