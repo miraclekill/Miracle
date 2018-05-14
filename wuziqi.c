@@ -58,5 +58,68 @@ void printChessboard(void)
 				printf("  *");
 			}
 		}
+		printf("\n");
 	}
+}
+
+void playChess(void)
+{
+	int i = 0, j = 0;
+	if (whoseTurn % 2 == 1) {
+		printf("Turn to player 1, please input the position:");
+		scanf("%d %d", &i, &j);
+		while (chessboard[i][j] != 0) {
+			printf("your position is taken,choose another:"); 
+			scanf("%d %d", &i, &j);
+		}
+		chessboard[i][j] = 1;
+	}
+	else {
+		printf("Turn to player 2, please input the position:");
+		scanf("%d %d", &i, &j);
+		while (chessboard[i][j] != 0) {
+			printf("your position is taken,choose another:"); 
+			scanf("%d %d", &i, &j);
+		}
+		chessboard[i][j] = 2;
+	}
+	
+	system("clear");
+	printChessboard();
+	if (judge(i, j)) {
+		if (whoseTurn % 2 == 1) {
+			printf("play1 win\n");
+			exit(0);
+		}
+		else {
+			printf("play2 win\n");
+			exit(0);
+		}
+	}
+}
+
+int judge(int x, int y)
+{
+	int i, j, k;
+	int row = 0, col = 0;
+	int t = 2 - whoseTurn % 2;
+	const int step[4][2] = {{-1,0},{0,-1},{1,1},{1,0}};
+	for (i = 0; i < 4; ++i) {
+		const d[2] = {-1,1};
+		int count = 1;
+		for (j = 0; j < 2; ++j) {
+			for (k = 1; k <= 4; ++k) {
+				row = x + k * d[j] * step[i][0];
+				col = y + k * d[j] * step[i][1];
+				if (row >= 1 && row <=N && col >= 1 && col <= N && chessboard[x][y] = chessboard[row][col]) {
+					count += 1;
+				}
+				else 
+					break;
+			}
+		}
+		if (count >= 5)
+			return 1;
+	}
+	return 0;
 }
