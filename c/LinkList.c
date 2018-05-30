@@ -248,7 +248,7 @@ void TraverseList(LinkList L, void (*visit)(ElemType))
 	}
 }
 
-int main(int argc, char** argv)
+int main(int argc, char *argv[])
 {
 	LinkList L;
 	InitList(&L);
